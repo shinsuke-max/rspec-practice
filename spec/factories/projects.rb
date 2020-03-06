@@ -5,6 +5,10 @@ FactoryBot.define do
     due_on 1.week.from_now
     association :owner
     
+    trait :invalid do
+      name nil
+    end
+    
     # note付き コールバックはtraitのみで使おう
     trait :with_note do
       after(:create) { |project| create_list(:note, 5, project: project) }
